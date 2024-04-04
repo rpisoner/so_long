@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:20:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/28 20:20:40 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:31:29 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,13 @@ void	print_map(char **array)
 
 int	main(int argc, char *argv[])
 {
-	t_map		map_struct;
-	t_images	imgs;
-	t_mlx		mlx;
+	t_data		data;
 
 	errors(argv[1], argc);
-	map_reader(&map_struct, argv[1]);
-	map_checker(&map_struct);
-	init_window(&map_struct, &mlx, &imgs);
-	// mlx_loop_hook(mlx.mlx_ptr, (void *)render, &map_struct);
+	map_reader(&data.map, argv[1]);
+	map_checker(&data.map);
+	init_window(&data);
 	//print_map(map_struct.map);
 	//atexit(leaks);
-	mlx_loop(mlx.mlx_ptr);
+	mlx_loop(data.mlx.mlx_ptr);
 }

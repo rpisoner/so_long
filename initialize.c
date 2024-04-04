@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:23:03 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/28 19:22:43 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:52:03 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,21 @@ void	init_imgs(t_mlx *mlx, t_images *img)
 {
 	int	size;
 
-	size = 64;
+	size = SIZE;
 	img->p_img = mlx_xpm_file_to_image(mlx->mlx_ptr, PLAYER, &size, &size);
+	img->f_img = mlx_xpm_file_to_image(mlx->mlx_ptr, FLOOR, &size, &size);
+	img->w_img = mlx_xpm_file_to_image(mlx->mlx_ptr, WALL, &size, &size);
+	img->c_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COIN, &size, &size);
+	img->e_img = mlx_xpm_file_to_image(mlx->mlx_ptr, EXIT, &size, &size);
 }
 
-void	render(t_mlx *mlx, t_map *map, t_images *img)
+int	render(t_data *data)
 {
-	int	i;
-	int	j;
+	//static int	frame;
 
-	i = 1;
-	while (i < map->height - 1)
-	{
-		j = 1;
-		while (j < map->width - 1)
-		{
-			if (map->map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-					img->p_img, j * 64, i * 64);
-			}
-			j++;
-		}
-		i++;
-	}
+	//frame += 1;
+	mlx_clear_window(data->mlx.mlx_ptr, data->mlx.win_ptr);
+	render_wall(data);
+	render_player(data);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:41:24 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/28 20:19:09 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:41:07 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	check_minimum_element(char element, int *e, int *p, int *c)
 	else if (element == 'P')
 		*p += 1;
 	else if (element == 'C')
-		*c = 1;
+		*c += 1;
 }
 
 static void	minimum_elements(t_map *map)

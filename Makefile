@@ -26,6 +26,7 @@ FILES = so_long \
 		map_checker \
 		libft_utils \
 		initialize \
+		render_imgs \
 		get_next_line \
 		window_management \
 		get_next_line_utils 

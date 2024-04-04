@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:26:47 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/28 20:23:02 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:04:10 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@
 
 # include <stdio.h>
 # include "get_next_line.h"
-# define PLAYER "./textures/xlr8.xpm"
+# define PLAYER "./textures/player.xpm"
+# define FLOOR "./textures/floor.xpm"
+# define WALL "./textures/wall.xpm"
+# define COIN "./textures/coin.xpm"
+# define EXIT "./textures/exit.xpm"
+# define SIZE 64
 
 typedef struct s_map
 {
@@ -30,13 +35,14 @@ typedef struct s_map
 	int		coin_num;
 	int		x_player;
 	int		y_player;
+	int		p_move_num;
 }	t_map;
 
 typedef struct s_images
 {
 	void	*p_img;
-	void	*one_img;
-	void	*cero_img;
+	void	*w_img;
+	void	*f_img;
 	void	*c_img;
 	void	*e_img;
 }	t_images;
@@ -46,6 +52,13 @@ typedef struct s_mlx
 	void	*mlx_ptr;
 	void	*win_ptr;
 }	t_mlx;
+
+typedef struct s_data
+{
+	t_mlx		mlx;
+	t_images	imgs;	
+	t_map		map;
+}	t_data;
 
 enum
 {
@@ -72,15 +85,23 @@ void	map_reader(t_map *map, char *file);
 void	map_checker(t_map *map);
 void	valid_path(t_map *map);
 //DISPLAY_MAP
-void	init_window(t_map *map, t_mlx *mlx, t_images *imgs);
+void	init_window(t_data *data);
 void	print_map(char **array);
 //INITIALIZE
 void	init_imgs(t_mlx *mlx, t_images *img);
-void	render(t_mlx *mlx, t_map *map, t_images *img);
-int		movements(int keycode, t_map *map);
+int		render(t_data *data);
+//RENDER
+void	render_player(t_data *data);
+void	render_floor(t_data *data);
+void	render_wall(t_data *data);
+void	render_coin(t_data *data);
+void	render_exit(t_data *data);
 //MOVEMENTS
+int		movements(int keycode, t_map *map);
 void	move_up(t_map *map);
 void	move_left(t_map *map);
 void	move_down(t_map *map);
 void	move_right(t_map *map);
+//WINDOW MANAGEMENT
+int		close_window(void);
 #endif

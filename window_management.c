@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:22:57 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/28 20:25:07 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:08:28 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,31 @@ int	close_window(void)
 
 int	movements(int keycode, t_map *map)
 {
-	if (keycode == KEY_W)
+	if (keycode == KEY_W || keycode == KEY_UP)
 		move_up(map);
-	else if (keycode == KEY_A)
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
 		move_left(map);
-	else if (keycode == KEY_S)
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
 		move_down(map);
-	else if (keycode == KEY_D)
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 		move_right(map);
 	else if (keycode == KEY_ESCAPE)
-		close_window();
-	printf("\nCN: %d\n", map->coin_num);
-	print_map(map->map);
-	printf("\n");
+		exit(0);
+	// printf("\nCN: %d\n", map->coin_num);
+	// printf("PM: %d\n", map->p_move_num);
+	// print_map(map->map);
+	// printf("\n");
 	return (0);
 }
 
-void	init_window(t_map *map, t_mlx *mlx, t_images *imgs)
+void	init_window(t_data *data)
 {
-	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, map->width * 64,
-			map->height * 64, "So_Long by: rpisoner");
-	init_imgs(mlx, imgs);
-	render(mlx, map, imgs);
-	mlx_hook(mlx->win_ptr, 17, 0, close_window, 0);
-	mlx_hook(mlx->win_ptr, 2, 0, movements, map);
+	data->mlx.mlx_ptr = mlx_init();
+	data->mlx.win_ptr = mlx_new_window(data->mlx.mlx_ptr, data->map.width
+			* SIZE, data->map.height * SIZE, "So_Long by: rpisoner");
+	data->map.p_move_num = 0;
+	init_imgs(&data->mlx, &data->imgs);
+	mlx_hook(data->mlx.win_ptr, 17, 0, close_window, 0);
+	mlx_hook(data->mlx.win_ptr, 2, 0, movements, &data->map);
+	mlx_loop_hook(data->mlx.mlx_ptr, render, data);
 }
-
