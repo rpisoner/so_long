@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   render_enemy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 10:20:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 19:09:44 by rpisoner         ###   ########.fr       */
+/*   Created: 2024/04/13 18:35:58 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/04/13 18:36:48 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-// void	leaks()
-// {
-// 	system("leaks so_long");
-// }
-
-int	main(int argc, char *argv[])
+int	render_enemy(t_data *data)
 {
-	t_data		data;
+	int	i;
+	int	j;
 
-	errors(argv[1], argc);
-	map_reader(&data.map, argv[1]);
-	map_checker(&data.map);
-	remove_exit(&data.map);
-	init_window(&data);
-	mlx_loop(data.mlx.mlx_ptr);
+	i = 1;
+	while (i < data->map.height - 1)
+	{
+		j = 1;
+		while (j < data->map.width - 1)
+		{
+			if (data->map.map[i][j] == 'M')
+			{
+				mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win_ptr,
+					data->imgs.m_img, j * SIZE, i * SIZE);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

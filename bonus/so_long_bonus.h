@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:26:47 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 19:08:26 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/13 19:23:56 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <mlx.h>
 # include <math.h>
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include "get_next_line.h"
 # define PLAYER "./textures/capi_f.xpm"
+# define ENEMY "./textures/cobra_rev.xpm"
 # define FLOOR "./textures/floor.xpm"
 # define WALL "./textures/tree.xpm"
 # define COIN "./textures/coin.xpm"
@@ -43,6 +44,7 @@ typedef struct s_map
 typedef struct s_images
 {
 	void	*p_img;
+	void	*m_img;
 	void	*w_img;
 	void	*f_img;
 	void	*c_img;
@@ -98,14 +100,13 @@ int		render_floor(t_data *data);
 int		render_wall(t_data *data);
 int		render_coin(t_data *data);
 int		render_exit(t_data *data);
+int		render_enemy(t_data *data);
 //MOVEMENTS
 int		movements(int keycode, t_map *map);
 void	move_up(t_map *map);
 void	move_left(t_map *map);
 void	move_down(t_map *map);
 void	move_right(t_map *map);
-//REMOVE EXIT
-void	remove_exit(t_map *map);
 //WINDOW MANAGEMENT
 int		close_window(void);
 #endif

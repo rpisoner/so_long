@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves.c                                            :+:      :+:    :+:   */
+/*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:39:56 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 12:55:30 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/13 18:42:00 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	move_up(t_map *map)
 {
-	if (map->map[map->y_player - 1][map->x_player] == '1' ||
+	if (map->map[map->y_player - 1][map->x_player] == 'M')
+		exit(0);
+	else if (map->map[map->y_player - 1][map->x_player] == '1' ||
 		(map->map[map->y_player - 1][map->x_player] == 'E' &&
 		map->coin_num > 0))
 		return ;
@@ -32,7 +34,9 @@ void	move_up(t_map *map)
 
 void	move_left(t_map *map)
 {
-	if (map->map[map->y_player][map->x_player - 1] == '1' ||
+	if (map->map[map->y_player][map->x_player - 1] == 'M')
+		exit(0);
+	else if (map->map[map->y_player][map->x_player - 1] == '1' ||
 		(map->map[map->y_player][map->x_player - 1] == 'E' &&
 		map->coin_num > 0))
 		return ;
@@ -50,7 +54,9 @@ void	move_left(t_map *map)
 
 void	move_down(t_map *map)
 {
-	if (map->map[map->y_player + 1][map->x_player] == '1' ||
+	if (map->map[map->y_player + 1][map->x_player] == 'M')
+		exit(0);
+	else if (map->map[map->y_player + 1][map->x_player] == '1' ||
 		(map->map[map->y_player + 1][map->x_player] == 'E' &&
 		map->coin_num > 0))
 		return ;
@@ -68,7 +74,9 @@ void	move_down(t_map *map)
 
 void	move_right(t_map *map)
 {
-	if (map->map[map->y_player][map->x_player + 1] == '1' ||
+	if (map->map[map->y_player][map->x_player + 1] == 'M')
+		exit(0);
+	else if (map->map[map->y_player][map->x_player + 1] == '1' ||
 		(map->map[map->y_player][map->x_player + 1] == 'E' &&
 		map->coin_num > 0))
 		return ;

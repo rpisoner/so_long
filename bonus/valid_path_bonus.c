@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_path.c                                       :+:      :+:    :+:   */
+/*   valid_path_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:36:27 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 19:04:38 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/13 18:10:00 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	free_aux(char **aux, int height)
 {
@@ -28,13 +28,13 @@ static void	free_aux(char **aux, int height)
 static void	flood_fill(int row, int column, char **map)
 {
 	map[column][row] = '1';
-	if (map[column + 1][row] != '1')
+	if (map[column + 1][row] != '1' && map[column + 1][row] != 'E')
 		flood_fill(row, column + 1, map);
-	if (map[column - 1][row] != '1')
+	if (map[column - 1][row] != '1' && map[column - 1][row] != 'E')
 		flood_fill(row, column - 1, map);
-	if (map[column][row - 1] != '1')
+	if (map[column][row - 1] != '1' && map[column][row - 1] != 'E')
 		flood_fill(row - 1, column, map);
-	if (map[column][row + 1] != '1')
+	if (map[column][row + 1] != '1' && map[column][row + 1] != 'E')
 		flood_fill(row + 1, column, map);
 }
 
@@ -70,7 +70,7 @@ static void	check_valid_map(char **aux, int width, int height)
 		j = 1;
 		while (j < width - 1)
 		{
-			if (aux[i][j] != '1' && aux[i][j] != '0')
+			if (aux[i][j] != '1' && aux[i][j] != '0' && aux[i][j] != 'E')
 				print_error();
 			j++;
 		}

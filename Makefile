@@ -3,6 +3,7 @@
 #       PROJECT: so_long                                                           #
 #########################################################################################
 NAME = so_long
+BONUS_NAME = so_long_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I/opt/X11/include -Imlx
@@ -23,6 +24,7 @@ FILES = so_long \
 		errors \
 		map_reader \
 		valid_path \
+		remove_exit \
 		map_checker \
 		libft_utils \
 		initialize \
@@ -36,8 +38,19 @@ OBJS = $(addsuffix .o, $(FILES))
 #########################################################################################
 # Bonus sources and objects
 #########################################################################################
-BFILES =
-BSRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(BFILES)))
+BFILES =	error_bonus \
+			moves_bonus \
+			errors_bonus \
+			map_reader_bonus \
+			valid_path_bonus \
+			map_checker_bonus \
+			libft_utils_bonus \
+			initialize_bonus \
+			render_imgs_bonus \
+			get_next_line_bonus \
+			window_management_bonus \
+			get_next_line_utils_bonus
+BSRCS = $(addprefix $(SRC_DIR)/bonus/, $(addsuffix .c, $(BFILES)))
 BOBJS = $(addsuffix .o, $(BFILES))
 
 #########################################################################################
@@ -64,6 +77,16 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+
+# bonus: $(BONUS_NAME)
+
+# ./bonus/%.o: ./bonus/%.c
+# 	@echo "$(Y)Compiling bonus: $<$(DEF_COLOR)"
+# 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
+# $(BONUS_NAME): $(OBJS) $(BOBJS)
+# 	@$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+# 	@$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS_NAME)
 
 clean:
 	@$(RM) $(OBJS) $(BOBJS)

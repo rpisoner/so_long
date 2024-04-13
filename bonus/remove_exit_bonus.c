@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   remove_exit_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 10:20:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 19:09:44 by rpisoner         ###   ########.fr       */
+/*   Created: 2024/04/13 19:06:18 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/04/13 19:20:43 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-// void	leaks()
-// {
-// 	system("leaks so_long");
-// }
-
-int	main(int argc, char *argv[])
+void	set_exit_position_and_transform_exit(t_map *map)
 {
-	t_data		data;
+	int	i;
+	int	j;
 
-	errors(argv[1], argc);
-	map_reader(&data.map, argv[1]);
-	map_checker(&data.map);
-	remove_exit(&data.map);
-	init_window(&data);
-	mlx_loop(data.mlx.mlx_ptr);
+	i = 1;
+	while (i < map->height - 1)
+	{
+		j = 1;
+		while (j < map->width - 1)
+		{
+			if (map->map[i][j] == 'E')
+			{
+				map->x_exit = j;
+				map->y_exit = i;
+				map->map[i][j] = '0';
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	remove_exit(t_map *map)
+{
+	set_exit_position_and_transform_exit(map);
 }
