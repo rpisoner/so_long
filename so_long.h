@@ -62,19 +62,6 @@ typedef struct s_data
 	t_map		map;
 }	t_data;
 
-enum
-{
-	KEY_A = 0,
-	KEY_S = 1,
-	KEY_D = 2,
-	KEY_W = 13,
-	KEY_ESCAPE = 53,
-	KEY_LEFT = 123,
-	KEY_RIGHT = 124,
-	KEY_DOWN = 125,
-	KEY_UP = 126
-};
-
 //ERRORS
 void	print_error(void);
 void	errors(char *file, int argc);

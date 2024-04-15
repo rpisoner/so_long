@@ -39,7 +39,7 @@ void	init_window(t_data *data)
 			* SIZE, data->map.height * SIZE, "So_Long by: rpisoner");
 	data->map.p_move_num = 0;
 	init_imgs(&data->mlx, &data->imgs);
-	mlx_hook(data->mlx.win_ptr, 17, 0, close_window, 0);
-	mlx_hook(data->mlx.win_ptr, 2, 0, movements, &data->map);
+	mlx_hook(data->mlx.win_ptr, 17, KEY_PRESS_MASK, close_window, 0);
+	mlx_hook(data->mlx.win_ptr, 2, KEY_PRESS_MASK, movements, &data->map);
 	mlx_loop_hook(data->mlx.mlx_ptr, render, data);
 }
