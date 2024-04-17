@@ -40,28 +40,36 @@ FILES = so_long \
 		initialize \
 		render_imgs \
 		get_next_line \
+		explicit_errors \
+		explicit_errors2 \
+		explicit_errors3 \
 		window_management \
-		get_next_line_utils 
-SRCS = $(addsuffix .c, $(FILES))
-OBJS = $(addsuffix .o, $(FILES))
+		get_next_line_utils
+SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
+OBJS = $(addprefix src/, $(addsuffix .o, $(FILES)))
 
 #########################################################################################
 # Bonus sources and objects
 #########################################################################################
-BFILES =	error_bonus \
+BFILES =	so_long_bonus \
 			moves_bonus \
 			errors_bonus \
 			map_reader_bonus \
 			valid_path_bonus \
 			map_checker_bonus \
+			remove_exit_bonus \
 			libft_utils_bonus \
 			initialize_bonus \
 			render_imgs_bonus \
+			render_enemy_bonus \
 			get_next_line_bonus \
+			explicit_errors_bonus \
+			explicit_errors2_bonus \
+			explicit_errors3_bonus \
 			window_management_bonus \
 			get_next_line_utils_bonus
-BSRCS = $(addprefix $(SRC_DIR)/bonus/, $(addsuffix .c, $(BFILES)))
-BOBJS = $(addsuffix .o, $(BFILES))
+BSRCS = $(addprefix src_bonus/, $(addsuffix .c, $(BFILES)))
+BOBJS = $(addprefix src_bonus/, $(addsuffix .o, $(BFILES)))
 
 #########################################################################################
 # Colors
@@ -88,23 +96,18 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
-# bonus: $(BONUS_NAME)
+bonus: $(BONUS_NAME)
 
-# ./bonus/%.o: ./bonus/%.c
-# 	@echo "$(Y)Compiling bonus: $<$(DEF_COLOR)"
-# 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
-
-# $(BONUS_NAME): $(OBJS) $(BOBJS)
-# 	@$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
-# 	@$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS_NAME)
+$(BONUS_NAME): $(BOBJS)
+	@$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS_NAME)
 
 clean:
 	@$(RM) $(OBJS) $(BOBJS)
 	@echo "$(R)All .o files removed$(DEF_COLOR)"
 
 fclean: clean
-	@$(RM) $(NAME)
-	@echo "$(R)Executable file removed: $(NAME)$(DEF_COLOR)"
+	@$(RM) $(NAME) $(BONUS_NAME)
+	@echo "$(R)Executable files removed$(DEF_COLOR)"
 
 re: fclean all
 
