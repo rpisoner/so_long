@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:50:13 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 19:25:17 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:56:22 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	render_player(t_data *data)
 			if (data->map.map[i][j] == 'P')
 			{
 				mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win_ptr,
-					data->imgs.p_img, j * SIZE, i * SIZE);
+					data->imgs.p_img, j * SIZE, (i + 1) * SIZE);
 			}
 			j++;
 		}
@@ -49,7 +49,7 @@ int	render_wall(t_data *data)
 			if (data->map.map[i][j] == '1')
 			{
 				mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win_ptr,
-					data->imgs.w_img, j * SIZE, i * SIZE);
+					data->imgs.w_img, j * SIZE, (i + 1) * SIZE);
 			}
 			j++;
 		}
@@ -72,7 +72,7 @@ int	render_floor(t_data *data)
 			if (data->map.map[i][j] == '0')
 			{
 				mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win_ptr,
-					data->imgs.f_img, j * SIZE, i * SIZE);
+					data->imgs.f_img, j * SIZE, (i + 1) * SIZE);
 			}
 			j++;
 		}
@@ -95,7 +95,7 @@ int	render_coin(t_data *data)
 			if (data->map.map[i][j] == 'C')
 			{
 				mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win_ptr,
-					data->imgs.c_img, j * SIZE, i * SIZE);
+					data->imgs.c_img, j * SIZE, (i + 1) * SIZE);
 			}
 			j++;
 		}
@@ -108,6 +108,7 @@ int	render_exit(t_data *data)
 {
 	data->map.map[data->map.y_exit][data->map.x_exit] = 'E';
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win_ptr,
-		data->imgs.e_img, data->map.x_exit * SIZE, data->map.y_exit * SIZE);
+		data->imgs.e_img, data->map.x_exit * SIZE,
+		(data->map.y_exit + 1) * SIZE);
 	return (0);
 }

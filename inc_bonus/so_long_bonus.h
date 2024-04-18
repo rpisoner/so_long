@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:26:47 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/18 14:42:50 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:36:58 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "get_next_line.h"
 # define PLAYER "./textures/capi_f.xpm"
 # define PLAYER_LEFT "./textures/capy_frev.xpm"
-# define ENEMY "./textures/plex.xpm"
+# define ENEMY "./textures/cobra_rev.xpm"
 # define FLOOR "./textures/floor.xpm"
 # define LOG "./textures/log.xpm"
 # define WALL "./textures/tree.xpm"
@@ -31,6 +31,7 @@
 # define SUMMER "./textures/summer.xpm"
 # define COIN "./textures/coin.xpm"
 # define EXIT "./textures/exit.xpm"
+# define BANNER "./textures/brown.xpm"
 # define SIZE 64
 
 # ifndef KEY_W
@@ -85,6 +86,7 @@ typedef struct s_images
 	void	*f_img;
 	void	*c_img;
 	void	*e_img;
+	void	*b_img;
 }	t_images;
 
 typedef struct s_mlx
@@ -118,6 +120,7 @@ void	exit_error(void);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 void	ft_putnbr(int nb);
+char	*ft_itoa(int n);
 //MAP_READER
 void	map_reader(t_map *map, char *file);
 //MAP_CHECKER

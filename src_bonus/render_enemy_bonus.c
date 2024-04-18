@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:35:58 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/18 12:46:58 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:22:06 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	render_enemy(t_data *data)
 			if (data->map.map[i][j] == 'M')
 			{
 				mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win_ptr,
-					data->imgs.m_img, j * SIZE, i * SIZE);
+					data->imgs.m_img, j * SIZE, (i + 1) * SIZE);
 			}
 			j++;
 		}

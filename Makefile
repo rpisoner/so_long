@@ -54,6 +54,7 @@ OBJS = $(addprefix src/, $(addsuffix .o, $(FILES)))
 BFILES =	so_long_bonus \
 			moves_bonus \
 			errors_bonus \
+			ft_itoa_bonus \
 			map_reader_bonus \
 			valid_path_bonus \
 			map_checker_bonus \

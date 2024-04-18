@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:22:57 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/18 12:23:13 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:52:23 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	init_window(t_data *data)
 {
 	data->mlx.mlx_ptr = mlx_init();
 	data->mlx.win_ptr = mlx_new_window(data->mlx.mlx_ptr, data->map.width
-			* SIZE, data->map.height * SIZE, "So_Long by: rpisoner");
+			* SIZE, (data->map.height + 1) * SIZE, "So_Long by: rpisoner");
 	data->map.p_move_num = 0;
 	init_imgs(&data->mlx, &data->imgs);
 	mlx_hook(data->mlx.win_ptr, 17, KEY_PRESS_MASK, close_window, 0);

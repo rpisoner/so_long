@@ -6,16 +6,11 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:20:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 19:19:48 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:43:59 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc_bonus/so_long_bonus.h"
-
-// void	leaks()
-// {
-// 	system("leaks so_long");
-// }
 
 int	main(int argc, char *argv[])
 {
