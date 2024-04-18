@@ -59,6 +59,7 @@ BFILES =	so_long_bonus \
 			map_checker_bonus \
 			remove_exit_bonus \
 			libft_utils_bonus \
+			animations_bonus \
 			initialize_bonus \
 			render_imgs_bonus \
 			render_enemy_bonus \

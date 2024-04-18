@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_enemy.c                                     :+:      :+:    :+:   */
+/*   render_enemy_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:35:58 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 18:36:48 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:46:58 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,22 @@ int	render_enemy(t_data *data)
 		i++;
 	}
 	return (0);
+}
+
+void	set_player_img_right(t_data *data)
+{
+	int	size;
+
+	size = SIZE;
+	data->imgs.p_img = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+			PLAYER, &size, &size);
+}
+
+void	set_player_img_left(t_data *data)
+{
+	int	size;
+
+	size = SIZE;
+	data->imgs.p_img = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+			PLAYER_LEFT, &size, &size);
 }

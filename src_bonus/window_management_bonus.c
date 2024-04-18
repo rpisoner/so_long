@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:22:57 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/13 18:10:04 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:23:13 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@ int	close_window(void)
 	exit(0);
 }
 
-int	movements(int keycode, t_map *map)
+int	movements(int keycode, t_data *data)
 {
 	if (keycode == KEY_W || keycode == KEY_UP)
-		move_up(map);
+		move_up(&data->map);
 	else if (keycode == KEY_A || keycode == KEY_LEFT)
-		move_left(map);
+	{
+		set_player_img_left(data);
+		move_left(&data->map);
+	}
 	else if (keycode == KEY_S || keycode == KEY_DOWN)
-		move_down(map);
+		move_down(&data->map);
 	else if (keycode == KEY_D || keycode == KEY_RIGHT)
-		move_right(map);
+	{
+		set_player_img_right(data);
+		move_right(&data->map);
+	}
 	else if (keycode == KEY_ESCAPE)
 		exit(0);
 	return (0);
@@ -40,6 +46,6 @@ void	init_window(t_data *data)
 	data->map.p_move_num = 0;
 	init_imgs(&data->mlx, &data->imgs);
 	mlx_hook(data->mlx.win_ptr, 17, KEY_PRESS_MASK, close_window, 0);
-	mlx_hook(data->mlx.win_ptr, 2, KEY_PRESS_MASK, movements, &data->map);
+	mlx_hook(data->mlx.win_ptr, 2, KEY_PRESS_MASK, movements, data);
 	mlx_loop_hook(data->mlx.mlx_ptr, render, data);
 }

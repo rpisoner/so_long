@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:26:47 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/17 20:06:08 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:42:50 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,52 @@
 # include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <stdio.h>
 
 # include "get_next_line.h"
 # define PLAYER "./textures/capi_f.xpm"
-# define ENEMY "./textures/cobra_rev.xpm"
+# define PLAYER_LEFT "./textures/capy_frev.xpm"
+# define ENEMY "./textures/plex.xpm"
 # define FLOOR "./textures/floor.xpm"
+# define LOG "./textures/log.xpm"
 # define WALL "./textures/tree.xpm"
+# define WINTER "./textures/winter.xpm"
+# define AUTUMN "./textures/autumn.xpm"
+# define SUMMER "./textures/summer.xpm"
 # define COIN "./textures/coin.xpm"
 # define EXIT "./textures/exit.xpm"
 # define SIZE 64
-/*
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_ESCAPE 123
-# define KEY_UP 126
-# define KEY_LEFT 123
-# define KEY_DOWN 125
-# define KEY_RIGHT 124
-# define KEY_PRESS_MASK 0
-*/
+
+# ifndef KEY_W
+#  define KEY_W 13
+# endif
+# ifndef KEY_A
+#  define KEY_A 0
+# endif
+# ifndef KEY_S
+#  define KEY_S 1
+# endif
+# ifndef KEY_D
+#  define KEY_D 2
+# endif
+# ifndef KEY_ESCAPE
+#  define KEY_ESCAPE 123
+# endif
+# ifndef KEY_UP
+#  define KEY_UP 126
+# endif
+# ifndef KEY_LEFT
+#  define KEY_LEFT 123
+# endif
+# ifndef KEY_DOWN
+#  define KEY_DOWN 125
+# endif
+# ifndef KEY_RIGHT
+#  define KEY_RIGHT 124
+# endif
+# ifndef KEY_PRESS_MASK
+#  define KEY_PRESS_MASK 0
+# endif
 
 typedef struct s_map
 {
@@ -110,8 +135,15 @@ int		render_wall(t_data *data);
 int		render_coin(t_data *data);
 int		render_exit(t_data *data);
 int		render_enemy(t_data *data);
+void	set_player_img_left(t_data *data);
+void	set_player_img_right(t_data *data);
+//ANIMATIONS
+void	set_winter(t_data *data);
+void	set_autumn(t_data *data);
+void	set_spring(t_data *data);
+void	set_summer(t_data *data);
 //MOVEMENTS
-int		movements(int keycode, t_map *map);
+int		movements(int keycode, t_data *data);
 void	move_up(t_map *map);
 void	move_left(t_map *map);
 void	move_down(t_map *map);

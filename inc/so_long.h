@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:26:47 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/17 20:12:52 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:07:53 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,36 @@
 # define COIN "./textures/coin.xpm"
 # define EXIT "./textures/exit.xpm"
 # define SIZE 64
-/*
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_ESCAPE 123
-# define KEY_UP 126
-# define KEY_LEFT 123
-# define KEY_DOWN 125
-# define KEY_RIGHT 124
-# define KEY_PRESS_MASK 0
-*/
+# ifndef KEY_W
+#  define KEY_W 13
+# endif
+# ifndef KEY_A
+#  define KEY_A 0
+# endif
+# ifndef KEY_S
+#  define KEY_S 1
+# endif
+# ifndef KEY_D
+#  define KEY_D 2
+# endif
+# ifndef KEY_ESCAPE
+#  define KEY_ESCAPE 123
+# endif
+# ifndef KEY_UP
+#  define KEY_UP 126
+# endif
+# ifndef KEY_LEFT
+#  define KEY_LEFT 123
+# endif
+# ifndef KEY_DOWN
+#  define KEY_DOWN 125
+# endif
+# ifndef KEY_RIGHT
+#  define KEY_RIGHT 124
+# endif
+# ifndef KEY_PRESS_MASK
+#  define KEY_PRESS_MASK 0
+# endif
 
 typedef struct s_map
 {
