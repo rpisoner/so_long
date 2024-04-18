@@ -22,7 +22,7 @@
 # include "get_next_line.h"
 # define PLAYER "./textures/capi_f.xpm"
 # define PLAYER_LEFT "./textures/capy_frev.xpm"
-# define ENEMY "./textures/cobra_rev.xpm"
+# define ENEMY "./textures/plex.xpm"
 # define FLOOR "./textures/floor.xpm"
 # define LOG "./textures/log.xpm"
 # define WALL "./textures/tree.xpm"
