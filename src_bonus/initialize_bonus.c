@@ -6,11 +6,17 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:23:03 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/18 18:49:16 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:26:55 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc_bonus/so_long_bonus.h"
+
+void	not_images(void)
+{
+	write(2, "Alguna de las imágenes no se cargó correctamente\n", 52);
+	exit(1);
+}
 
 void	init_imgs(t_mlx *mlx, t_images *img)
 {
@@ -24,6 +30,9 @@ void	init_imgs(t_mlx *mlx, t_images *img)
 	img->c_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COIN, &size, &size);
 	img->e_img = mlx_xpm_file_to_image(mlx->mlx_ptr, EXIT, &size, &size);
 	img->b_img = mlx_xpm_file_to_image(mlx->mlx_ptr, BANNER, &size, &size);
+	if (img->p_img == NULL || img->f_img == NULL || img->w_img == NULL
+		|| img->c_img == NULL || img->e_img == NULL || img->b_img == NULL)
+		not_images();
 }
 
 static void	animation(t_data *data, int *frames)
